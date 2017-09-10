@@ -12,21 +12,39 @@ class Hooks {
 	}
 
 	public static function onMobileMenu( $menuSection, $menu ) {
-		if ($menuSection === 'personal') {
-			$menu->insertAfter( 'watchlist', 'imagelist' )->addComponent(
-				'Neueste Dateien',
-				SpecialPage::getTitleFor('Imagelist')->getLocalUrl(),
-				MobileUI::iconClass( 'imagelist', 'before' ),
-				array( 'data-event-name' => 'imagelist' )
-			);
-			
-			$menu->insertAfter( 'watchlist', 'recentchanges' )->addComponent(
-				'Letze Änderungen',
-				SpecialPage::getTitleFor('RecentChanges')->getLocalUrl(),
-				MobileUI::iconClass( 'recentchanges', 'before' ),
-				array( 'data-event-name' => 'recentchanges' )
+		global $wgMobileSpecialPages;
+
+		$entries = (isset($wgMobileSpecialPages[$menuSection]) && is_array($wgMobileSpecialPages[$menuSection])) ?
+			$wgMobileSpecialPages[$menuSection] : [] ;
+
+		foreach ($entries as $key => $data) {
+			if ($key == 'RECENTCHANGES') {
+				$data = array(
+					isset($data[0]) ? $data[0] : 'Letze Änderungen',
+					isset($data[1]) ? $data[1] : SpecialPage::getTitleFor('RecentChanges')->getLocalUrl(),
+					isset($data[2]) ? $data[2] : MobileUI::iconClass( 'recentchanges', 'before' ),
+					array( 'data-event-name' => 'recentchanges' )
+				);
+			}
+
+			if ($key == 'IMAGELIST') {
+				$data = array(
+					isset($data[0]) ? $data[0] : 'Neueste Dateien',
+					isset($data[1]) ? $data[1] : SpecialPage::getTitleFor('Imagelist')->getLocalUrl(),
+					isset($data[2]) ? $data[2] : MobileUI::iconClass( 'imagelist', 'before' ),
+					array( 'data-event-name' => 'imagelist' )
+				);
+			}
+
+			$key = strtolower($key);
+			$menu->insert( $key )->addComponent(
+				$data[0],
+				$data[1],
+				isset($data[2]) ? $data[2] : null,
+				array( 'data-event-name' => $key )
 			);
 		}
+
 		return true;
 	}
 }
