@@ -13,18 +13,18 @@ class Hooks {
 
 	public static function onMobileMenu( $menuSection, $menu ) {
 		if ($menuSection === 'personal') {
-			$menu->insertAfter( 'watchlist', 'recentchanges' )->addComponent(
-				'Letze Änderungen',
-				SpecialPage::getTitleFor('RecentChanges')->getLocalUrl(),
-				MobileUI::iconClass( 'recentchanges', 'before' ),
-				array( 'data-event-name' => 'recentchanges' )
-			);
-
 			$menu->insertAfter( 'watchlist', 'imagelist' )->addComponent(
 				'Neueste Dateien',
 				SpecialPage::getTitleFor('Imagelist')->getLocalUrl(),
 				MobileUI::iconClass( 'imagelist', 'before' ),
 				array( 'data-event-name' => 'imagelist' )
+			);
+			
+			$menu->insertAfter( 'watchlist', 'recentchanges' )->addComponent(
+				'Letze Änderungen',
+				SpecialPage::getTitleFor('RecentChanges')->getLocalUrl(),
+				MobileUI::iconClass( 'recentchanges', 'before' ),
+				array( 'data-event-name' => 'recentchanges' )
 			);
 		}
 		return true;
