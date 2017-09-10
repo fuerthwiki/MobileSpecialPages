@@ -1,0 +1,38 @@
+{
+	"name": "MobileSpecialPages",
+	"version": "1.0.0",
+	"author": [
+		"Alexander Wunschik"
+	],
+	"url": "https://github.com/mojoaxel/MobileSpecialPages",
+	"descriptionmsg": "boilerplate-desc",
+	"license-name": "AGPL-3.0",
+	"type": "other",
+	"AutoloadClasses": {
+		"MediaWiki\\Extension\\MobileSpecialPages\\Hooks": "MobileSpecialPages.hooks.php"
+	},
+	"Hooks": {
+		"BeforePageDisplay": [
+			"MediaWiki\\Extension\\MobileSpecialPages\\Hooks::onBeforePageDisplay"
+		],
+		"MobileMenu": [
+			"MediaWiki\\Extension\\MobileSpecialPages\\Hooks::onMobileMenu"
+		]
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "MobileSpecialPages/resources"
+	},
+	"ResourceModules": {
+		"mobile.SpecialPages": {
+			"targets": [
+				"mobile"
+			],
+			"position": "bottom",
+			"styles": [
+				"mobile.SpecialPages/icons.less"
+			]
+		}
+	},
+	"manifest_version": 1
+}
