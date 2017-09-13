@@ -20,7 +20,7 @@ class Hooks {
 		foreach ($entries as $key => $data) {
 			if ($key == 'RECENTCHANGES') {
 				$data = array(
-					isset($data[0]) ? $data[0] : 'Letze Änderungen',
+					isset($data[0]) ? $data[0] : 'Letzte Änderungen',
 					isset($data[1]) ? $data[1] : SpecialPage::getTitleFor('RecentChanges')->getLocalUrl(),
 					isset($data[2]) ? $data[2] : MobileUI::iconClass( 'recentchanges', 'before' ),
 					array( 'data-event-name' => 'recentchanges' )
