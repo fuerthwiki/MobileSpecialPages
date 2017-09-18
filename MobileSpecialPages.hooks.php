@@ -7,7 +7,7 @@ use MobileUI;
 
 class Hooks {
 
-	public static function onBeforePageDisplay( $out, $skin ) {
+	public static function onBeforePageDisplayMobile( $out, $skin ) {
 		$out->addModuleStyles( 'mobile.SpecialPages' );
 	}
 

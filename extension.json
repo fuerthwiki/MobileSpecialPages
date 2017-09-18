@@ -1,6 +1,6 @@
 {
 	"name": "MobileSpecialPages",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"author": [
 		"Alexander Wunschik"
 	],
@@ -12,8 +12,8 @@
 		"MediaWiki\\Extension\\MobileSpecialPages\\Hooks": "MobileSpecialPages.hooks.php"
 	},
 	"Hooks": {
-		"BeforePageDisplay": [
-			"MediaWiki\\Extension\\MobileSpecialPages\\Hooks::onBeforePageDisplay"
+		"BeforePageDisplayMobile": [
+			"MediaWiki\\Extension\\MobileSpecialPages\\Hooks::onBeforePageDisplayMobile"
 		],
 		"MobileMenu": [
 			"MediaWiki\\Extension\\MobileSpecialPages\\Hooks::onMobileMenu"
